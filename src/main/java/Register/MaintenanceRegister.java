@@ -1,13 +1,13 @@
 package Register;
 
-public class ReceptionRegister {
+public class MaintenanceRegister {
     private String id,fName,lName,email,facility;
     private long phoneNo;
 
-    private ReceptionRegister() {
+    private MaintenanceRegister() {
     }
 
-    private ReceptionRegister(Builder builder) {
+    private MaintenanceRegister(Builder builder) {
         this.id = builder.id;
         this.fName=builder.fName;
         this.lName=builder.lName;
@@ -68,8 +68,8 @@ public class ReceptionRegister {
             this.facility=facility;
             return this;
         }
-        public ReceptionRegister build(){
-            return  new ReceptionRegister(this);
+        public MaintenanceRegister build(){
+            return  new MaintenanceRegister(this);
         }
 
         @Override
@@ -84,4 +84,5 @@ public class ReceptionRegister {
                     '}';
         }
     }
+   
 }

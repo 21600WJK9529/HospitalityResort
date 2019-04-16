@@ -1,4 +1,4 @@
-package Factory;
+package Factories.Register;
 
 import Register.UserRegister;
 
@@ -10,4 +10,5 @@ public class UserFactory {
                 .setPhoneNo(phoneNo)
                 .build();
     }
+
 }

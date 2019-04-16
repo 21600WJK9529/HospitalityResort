@@ -4,25 +4,41 @@ import java.util.Set;
 
 public class UserRegister {
 
-    private String id;
-    private String fName;
-    private String lName;
+    private String id,fName,lName;
     private long phoneNo;
+
     private Set<UserRegister> userRegister;
 
+        private UserRegister(){
 
-        public UserRegister(Builder builder) {
+        }
+
+        private UserRegister(Builder builder) {
             this.id = builder.id;
             this.fName=builder.fName;
             this.lName=builder.lName;
             this.phoneNo=builder.phoneNo;
         }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public long getPhoneNo() {
+        return phoneNo;
+    }
+
         public static class Builder {
 
-            private String id;
-            private String fName;
-            private String lName;
+            private String id,fName,lName;
             private long phoneNo;
             private Set<UserRegister> userRegister;
 
@@ -45,35 +61,18 @@ public class UserRegister {
                 return this;
             }
 
-
-            public String getId() {
-                return id;
-            }
-
-            public String getfName() {
-                return fName;
-            }
-
-            public String getlName() {
-                return lName;
-            }
-
-            public long getPhoneNo() {
-                return phoneNo;
-            }
-
-
             public UserRegister build(){
                 return new UserRegister(this);
             }
 
             @Override
             public String toString() {
-                return "Builder{" +
+                return "UserRegister{" +
                         "id='" + id + '\'' +
                         ", fName='" + fName + '\'' +
                         ", lName='" + lName + '\'' +
                         ", phoneNo=" + phoneNo +
+                        ", userRegister=" + userRegister +
                         '}';
             }
         }

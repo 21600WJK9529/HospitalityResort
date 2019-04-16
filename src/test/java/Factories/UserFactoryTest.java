@@ -1,5 +1,6 @@
-package Factory;
+package Factories;
 
+import Factories.Register.UserFactory;
 import Register.UserRegister;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ public class UserFactoryTest {
 
     @Test
     public void getUserRegister() {
-        UserRegister user=UserFactory.getUserRegister("A1","A","B",1231321);
+        UserRegister user= UserFactory.getUserRegister("A1","A","B",1231321);
         System.out.println(user);
         assertNotNull(user);
     }
