@@ -72,16 +72,17 @@ public class ReceptionRegister {
             return  new ReceptionRegister(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "id='" + id + '\'' +
-                    ", fName='" + fName + '\'' +
-                    ", lName='" + lName + '\'' +
-                    ", email='" + email + '\'' +
-                    ", facility='" + facility + '\'' +
-                    ", phoneNo=" + phoneNo +
-                    '}';
-        }
+
+    }
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "id='" + id + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", email='" + email + '\'' +
+                ", facility='" + facility + '\'' +
+                ", phoneNo=" + phoneNo +
+                '}';
     }
 }

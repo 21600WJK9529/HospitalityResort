@@ -30,11 +30,12 @@ public class SpaFacility implements FacilitiesInterface {
             return  new SpaFacility(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "spaName='" + spaName + '\'' +
-                    '}';
-        }
+
+    }
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "spaName='" + spaName + '\'' +
+                '}';
     }
 }

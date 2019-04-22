@@ -30,11 +30,12 @@ public class TennisFacility implements FacilitiesInterface {
             return  new TennisFacility(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "tennisName='" + tennisName + '\'' +
-                    '}';
-        }
+
+    }
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "tennisName='" + tennisName + '\'' +
+                '}';
     }
 }

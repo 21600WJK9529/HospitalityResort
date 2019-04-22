@@ -31,11 +31,12 @@ public class RestaurantFacility implements FacilitiesInterface {
             return new RestaurantFacility(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "restaurantName='" + restaurantName + '\'' +
-                    '}';
-        }
+
+    }
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "restaurantName='" + restaurantName + '\'' +
+                '}';
     }
 }

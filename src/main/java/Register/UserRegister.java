@@ -65,15 +65,16 @@ public class UserRegister {
                 return new UserRegister(this);
             }
 
-            @Override
-            public String toString() {
-                return "UserRegister{" +
-                        "id='" + id + '\'' +
-                        ", fName='" + fName + '\'' +
-                        ", lName='" + lName + '\'' +
-                        ", phoneNo=" + phoneNo +
-                        ", userRegister=" + userRegister +
-                        '}';
-            }
+
         }
+    @Override
+    public String toString() {
+        return "UserRegister{" +
+                "id='" + id + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", phoneNo=" + phoneNo +
+                ", userRegister=" + userRegister +
+                '}';
+    }
 }

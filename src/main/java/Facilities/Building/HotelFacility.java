@@ -30,11 +30,13 @@ public class HotelFacility implements FacilitiesInterface {
             return  new HotelFacility(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "hotelName='" + hotelName + '\'' +
-                    '}';
-        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "hotelName='" + hotelName + '\'' +
+                '}';
     }
 }

@@ -72,17 +72,17 @@ public class MaintenanceRegister {
             return  new MaintenanceRegister(this);
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "id='" + id + '\'' +
-                    ", fName='" + fName + '\'' +
-                    ", lName='" + lName + '\'' +
-                    ", email='" + email + '\'' +
-                    ", facility='" + facility + '\'' +
-                    ", phoneNo=" + phoneNo +
-                    '}';
-        }
     }
-   
+
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "id='" + id + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", email='" + email + '\'' +
+                ", facility='" + facility + '\'' +
+                ", phoneNo=" + phoneNo +
+                '}';
+    }
 }
