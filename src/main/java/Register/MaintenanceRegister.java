@@ -1,10 +1,15 @@
 package Register;
 
 public class MaintenanceRegister {
-    private String id,fName,lName,email,facility;
-    private long phoneNo;
+    private String id,fName,lName,email,facility,phoneNo;
 
-    private MaintenanceRegister() {
+    public MaintenanceRegister(String id, String fName, String lName, String email, String facility, String phoneNo) {
+        this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        this.email = email;
+        this.facility = facility;
+        this.phoneNo = phoneNo;
     }
 
     private MaintenanceRegister(Builder builder) {
@@ -28,7 +33,7 @@ public class MaintenanceRegister {
         return lName;
     }
 
-    public long getPhoneNo() {
+    public String getphoneNo() {
         return phoneNo;
     }
 
@@ -41,8 +46,8 @@ public class MaintenanceRegister {
 
     public static class Builder {
 
-        private String id,fName,lName,email,facility;
-        private long phoneNo;
+        private String id,fName,lName,email,facility,phoneNo;
+
 
         public Builder setId(String id){
             this.id=id;
@@ -56,7 +61,7 @@ public class MaintenanceRegister {
             this.lName=lName;
             return this;
         }
-        public Builder setPhoneNo(long phoneNo){
+        public Builder setPhoneNo(String phoneNo){
             this.phoneNo=phoneNo;
             return this;
         }
