@@ -3,7 +3,7 @@ package Factories.Register;
 import Register.MaintenanceRegister;
 
 public class MaintenanceFactory {
-    public static MaintenanceRegister getUserRegister(String id, String fName, String lName, String email, String facility, long phoneNo){
+    public static MaintenanceRegister getMaintenanceRegister(String id, String fName, String lName, String email, String facility, String phoneNo){
         return new MaintenanceRegister.Builder().setId(id)
                 .setfName(fName)
                 .setlName(lName)

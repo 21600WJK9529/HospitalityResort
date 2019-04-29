@@ -4,8 +4,8 @@ import java.util.Set;
 
 public class UserRegister {
 
-    private String id,fName,lName;
-    private long phoneNo;
+    private String id,fName,lName,phoneNo;
+
 
     private Set<UserRegister> userRegister;
 
@@ -32,14 +32,14 @@ public class UserRegister {
         return lName;
     }
 
-    public long getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
         public static class Builder {
 
-            private String id,fName,lName;
-            private long phoneNo;
+            private String id,fName,lName,phoneNo;
+
             private Set<UserRegister> userRegister;
 
             public Builder setId(String id) {
@@ -56,7 +56,7 @@ public class UserRegister {
                 return this;
             }
 
-            public Builder setPhoneNo(long phoneNo) {
+            public Builder setPhoneNo(String phoneNo) {
                 this.phoneNo = phoneNo;
                 return this;
             }

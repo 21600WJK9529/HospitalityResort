@@ -1,8 +1,7 @@
 package Register;
 
 public class ReceptionRegister {
-    private String id,fName,lName,email,facility;
-    private long phoneNo;
+    private String id,fName,lName,email,facility,phoneNo;
 
     private ReceptionRegister() {
     }
@@ -28,7 +27,7 @@ public class ReceptionRegister {
         return lName;
     }
 
-    public long getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
@@ -41,8 +40,7 @@ public class ReceptionRegister {
 
     public static class Builder {
 
-        private String id,fName,lName,email,facility;
-        private long phoneNo;
+        private String id,fName,lName,email,facility,phoneNo;
 
         public Builder setId(String id){
             this.id=id;
@@ -56,7 +54,7 @@ public class ReceptionRegister {
             this.lName=lName;
             return this;
         }
-        public Builder setPhoneNo(long phoneNo){
+        public Builder setPhoneNo(String phoneNo){
             this.phoneNo=phoneNo;
             return this;
         }

@@ -3,7 +3,7 @@ package Factories.Register;
 import Register.ReceptionRegister;
 
 public class ReceptionFactory {
-    public static ReceptionRegister getUserRegister(String id, String fName, String lName,String email, String facility, long phoneNo){
+    public static ReceptionRegister getReceptionRegister(String id, String fName, String lName,String email, String facility, String phoneNo){
         return new ReceptionRegister.Builder().setId(id)
                 .setfName(fName)
                 .setlName(lName)
