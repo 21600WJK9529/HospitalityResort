@@ -3,10 +3,12 @@ package Resort.Services.people;
 import Resort.Database.User.UserRepository;
 import Resort.Database.User.UserRepositoryImpl;
 import Resort.Domain.Register.UserRegister;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class UserServiceImpl {
+@Service("UserServiceImpl")
+public class UserServiceImpl implements UserService {
     private UserServiceImpl service=null;
     private UserRepository repository;
 
@@ -25,8 +27,8 @@ public class UserServiceImpl {
     }
 
 
-    public UserRegister create(UserRegister UserRegister) {
-        return this.repository.create(UserRegister);
+    public UserRegister create(UserRegister userRegister) {
+        return this.repository.create(userRegister);
     }
 
 

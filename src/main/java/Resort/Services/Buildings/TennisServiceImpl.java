@@ -3,10 +3,11 @@ package Resort.Services.Buildings;
 import Resort.Domain.Buildings.TennisRepository;
 import Resort.Domain.Buildings.TennisRepositoryImpl;
 import Resort.Domain.Facilities.Building.TennisFacility;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
-public class TennisServiceImpl {
+@Service("TennisServiceImpl")
+public class TennisServiceImpl implements TennisService{
     private TennisServiceImpl service=null;
     private TennisRepository repository;
 

@@ -6,7 +6,7 @@ import Resort.Domain.Facilities.FacilitiesInterface;
 public class GolfFacility implements FacilitiesInterface {
     private String golfID,golfName;
 
-    private GolfFacility() {
+    public GolfFacility() {
     }
     private GolfFacility(Builder builder) {
         this.golfID = builder.golfID;

@@ -1,10 +1,11 @@
 package Resort.Domain.Buildings;
 
 import Resort.Domain.Facilities.Building.GolfFacility;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Repository("GolfRepository")
 public class GolfRepositoryImpl implements GolfRepository {
     private static GolfRepository repository = null;
     private Set<GolfFacility> golfFacilitySet;
@@ -21,30 +22,30 @@ public class GolfRepositoryImpl implements GolfRepository {
         return golfFacility;
     }
 
-    public GolfFacility read(String golfName){
-        return search(golfName);
+    public GolfFacility read(String golfID){
+        return search(golfID);
     }
 
-    public GolfFacility update(GolfFacility golfName){
-        GolfFacility update=search(golfName.getGolfName());
+    public GolfFacility update(GolfFacility golfID){
+        GolfFacility update=search(golfID.getId());
         if (golfFacilitySet.contains(update)){
             golfFacilitySet.remove(update);
-            golfFacilitySet.add(golfName);
+            golfFacilitySet.add(golfID);
         }
-        return golfName;
+        return golfID;
     }
 
-    public void delete(String golfName){
-        golfFacilitySet.remove(search(golfName));
+    public void delete(String golfID){
+        golfFacilitySet.remove(search(golfID));
     }
 
     public Set<GolfFacility> getAll(){
         return this.golfFacilitySet;
     }
     
-    public GolfFacility search(String golfName){
+    public GolfFacility search(String golfID){
         return golfFacilitySet.stream().filter(GolfFacility->
-                GolfFacility.getGolfName()==golfName)
+                GolfFacility.getId()==golfID)
                 .findAny().orElse(null);
 
     }

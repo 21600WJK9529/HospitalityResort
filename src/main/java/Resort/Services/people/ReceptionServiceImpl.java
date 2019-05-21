@@ -3,9 +3,10 @@ package Resort.Services.people;
 import Resort.Domain.Reception.ReceptionRepository;
 import Resort.Domain.Reception.ReceptionRepositoryImpl;
 import Resort.Domain.Register.ReceptionRegister;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service("ReceptionServiceImpl")
 public class ReceptionServiceImpl implements ReceptionService {
     private ReceptionServiceImpl service=null;
     private ReceptionRepository repository;

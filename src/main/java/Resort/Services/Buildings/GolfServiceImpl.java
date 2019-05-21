@@ -3,16 +3,18 @@ package Resort.Services.Buildings;
 import Resort.Domain.Buildings.GolfRepository;
 import Resort.Domain.Buildings.GolfRepositoryImpl;
 import Resort.Domain.Facilities.Building.GolfFacility;
+import org.springframework.stereotype.Service;
 
 
 import java.util.Set;
 
-public class GolfServiceImpl {
+@Service ("GolfServiceImpl")
+public class GolfServiceImpl implements GolfService{
     private GolfServiceImpl service=null;
     private GolfRepository repository;
 
     private Set<GolfFacility> golfFacilities;
-    private GolfServiceImpl(){
+    public GolfServiceImpl(){
         this.repository= GolfRepositoryImpl.getRepository();
 
     }
@@ -22,7 +24,7 @@ public class GolfServiceImpl {
     }
 
     public Set<GolfFacility> getAll() {
-        return this.golfFacilities;
+        return repository.getAll();
     }
 
 

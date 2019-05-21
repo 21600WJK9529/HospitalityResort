@@ -10,8 +10,8 @@ public class ReceptionFactoryTest {
 
     @Test
     public void getReceptionRegister() {
-        ReceptionRegister reception= ReceptionFactory.getUserRegister("ASF123","June","Doe","x@fsd.com",
-                                                                                                            "Hotel",87945123);
+        ReceptionRegister reception= ReceptionFactory.getReceptionRegister("ASF123","June","Doe","x@fsd.com",
+                                                                                                            "Hotel","1231423");
         System.out.println(reception);
         assertNotNull(reception);
     }

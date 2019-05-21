@@ -9,7 +9,7 @@ public class UserRegister {
 
     private Set<UserRegister> userRegister;
 
-        private UserRegister(){
+        public UserRegister(){
 
         }
 
@@ -62,7 +62,7 @@ public class UserRegister {
             }
 
             public UserRegister build(){
-                return new UserRegister(this);
+                return  new UserRegister(this);
             }
 
 

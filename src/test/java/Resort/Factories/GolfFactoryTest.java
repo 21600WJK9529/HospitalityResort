@@ -10,7 +10,7 @@ public class GolfFactoryTest {
 
     @Test
     public void getGolfFacility() {
-        GolfFacility golf= GolfFactory.getGolfFacility("Golf Course");
+        GolfFacility golf= GolfFactory.getGolfFacility("GolfID","GolfName");
         System.out.println(golf);
         assertNotNull(golf);
     }

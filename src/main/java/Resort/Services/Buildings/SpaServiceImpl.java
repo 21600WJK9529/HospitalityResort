@@ -3,10 +3,11 @@ package Resort.Services.Buildings;
 import Resort.Domain.Buildings.SpaRepository;
 import Resort.Domain.Buildings.SpaRepositoryImpl;
 import Resort.Domain.Facilities.Building.SpaFacility;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
-public class SpaServiceImpl {
+@Service("SpaServiceImpl")
+public class SpaServiceImpl implements SpaService{
     private SpaServiceImpl service=null;
     private SpaRepository repository;
 

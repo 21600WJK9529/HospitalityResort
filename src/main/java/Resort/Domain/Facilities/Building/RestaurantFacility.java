@@ -2,7 +2,9 @@ package Resort.Domain.Facilities.Building;
 
 
 import Resort.Domain.Facilities.FacilitiesInterface;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RestaurantFacility implements FacilitiesInterface {
     private String restaurantID,restaurantName;
 

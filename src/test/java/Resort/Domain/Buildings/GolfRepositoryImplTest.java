@@ -15,7 +15,7 @@ GolfRepositoryImpl golf;
     }
     @Test
     public void create() {
-        GolfFacility x= getGolfFacility("TestName");
+        GolfFacility x= getGolfFacility("TestID", "TestName");
         golf.create(x);
         assertNotNull(golf.getAll());
         System.out.println(golf.getAll());
@@ -23,18 +23,18 @@ GolfRepositoryImpl golf;
 
     @Test
     public void read() {
-        GolfFacility x= getGolfFacility("TestName");
+        GolfFacility x= getGolfFacility("TestID", "TestName");
         golf.create(x);
-        assertNotNull(golf.read("TestName"));
+        assertNotNull(golf.read("TestID"));
         System.out.println(golf.getAll());  
     }
 
     @Test
     public void update() {
-        GolfFacility x= getGolfFacility("TestName");
+        GolfFacility x= getGolfFacility("TestID", "TestName");
         golf.create(x);
         System.out.println(golf.getAll());
-        GolfFacility xUpdate=getGolfFacility("TestNameUpdated");
+        GolfFacility xUpdate=getGolfFacility("TestID", "TestName2");
         golf.update(xUpdate);
         assertEquals(xUpdate,golf.read("TestID"));
         System.out.println(golf.getAll());
@@ -43,7 +43,7 @@ GolfRepositoryImpl golf;
     @Test
     public void delete() {
 
-        GolfFacility x= getGolfFacility("TestName");
+        GolfFacility x= getGolfFacility("TestID", "TestName");
         golf.create(x);
         System.out.println(golf.getAll());
         golf.delete("TestName");

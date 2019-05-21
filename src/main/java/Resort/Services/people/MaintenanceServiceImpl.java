@@ -3,9 +3,10 @@ package Resort.Services.people;
 import Resort.Domain.Maintenance.MaintenanceRepository;
 import Resort.Domain.Maintenance.MaintenanceRepositoryImpl;
 import Resort.Domain.Register.MaintenanceRegister;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service("MaintenanceServiceImpl")
 public class MaintenanceServiceImpl implements MaintenanceService {
     private MaintenanceServiceImpl service=null;
     private MaintenanceRepository repository;
