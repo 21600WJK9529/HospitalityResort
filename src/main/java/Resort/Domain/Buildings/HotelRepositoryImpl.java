@@ -32,16 +32,16 @@ public class HotelRepositoryImpl implements HotelRepository{
             }
             return hotelName;
         }
-        public void delete(String hotelName){
-            hotelFacilitySet.remove(search(hotelName));
+        public void delete(String hotelID){
+            hotelFacilitySet.remove(search(hotelID));
         }
         public Set<HotelFacility> getAll(){
             return this.hotelFacilitySet;
         }
 
-        public HotelFacility search(String hotelName){
+        public HotelFacility search(String hotelID){
             return hotelFacilitySet.stream().filter(HotelFacility->
-                    HotelFacility.getHotelName()==hotelName)
+                    HotelFacility.getHotelName()==hotelID)
                     .findAny().orElse(null);
 
         }

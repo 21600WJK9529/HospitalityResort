@@ -15,7 +15,7 @@ public class HotelRepositoryImplTest {
     }
     @Test
     public void create() {
-        HotelFacility x= getHotelFacility("TestName");
+        HotelFacility x= getHotelFacility("TestID","TestName");
         hotel.create(x);
         assertNotNull(hotel.getAll());
         System.out.println(hotel.getAll());
@@ -23,18 +23,18 @@ public class HotelRepositoryImplTest {
 
     @Test
     public void read() {
-        HotelFacility x= getHotelFacility("TestName");
+        HotelFacility x= getHotelFacility("TestID","TestName");
         hotel.create(x);
-        assertNotNull(hotel.read("TestName"));
+        assertNotNull(hotel.read("TestID"));
         System.out.println(hotel.getAll());
     }
 
     @Test
     public void update() {
-        HotelFacility x= getHotelFacility("TestName");
+        HotelFacility x= getHotelFacility("TestID","TestName");
         hotel.create(x);
         System.out.println(hotel.getAll());
-        HotelFacility xUpdate=getHotelFacility("TestNameUpdated");
+        HotelFacility xUpdate=getHotelFacility("TestID","TestName2");
         hotel.update(xUpdate);
         assertEquals(xUpdate,hotel.read("TestID"));
         System.out.println(hotel.getAll());
@@ -42,7 +42,7 @@ public class HotelRepositoryImplTest {
 
     @Test
     public void delete() {
-        HotelFacility x= getHotelFacility("TestName");
+        HotelFacility x= getHotelFacility("TestID","TestName");
         hotel.create(x);
         System.out.println(hotel.getAll());
         hotel.delete("TestName");

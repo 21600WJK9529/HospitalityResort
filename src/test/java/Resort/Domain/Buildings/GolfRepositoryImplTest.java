@@ -5,7 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static Resort.Factories.Facilities.GolfFactory.getGolfFacility;
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 public class GolfRepositoryImplTest {
 GolfRepositoryImpl golf;

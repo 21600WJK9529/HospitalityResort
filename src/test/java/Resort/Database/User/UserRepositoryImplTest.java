@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static Resort.Factories.Register.UserFactory.getUserRegister;
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.*;
 
 public class UserRepositoryImplTest {
 UserRepositoryImpl users;
