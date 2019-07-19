@@ -2,7 +2,6 @@ package Resort.Controllers.Users;
 
 import Resort.Domain.Register.MaintenanceRegister;
 import Resort.Factories.Register.MaintenanceFactory;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

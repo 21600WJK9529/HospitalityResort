@@ -10,7 +10,7 @@ public class HotelFactoryTest {
 
     @Test
     public void getHotelFacility() {
-        HotelFacility hotel= HotelFactory.getHotelFacility("Hotel A");
+        HotelFacility hotel= HotelFactory.getHotelFacility("Hotel A", "Hotel Name");
         System.out.println(hotel);
         assertNotNull(hotel);
     }

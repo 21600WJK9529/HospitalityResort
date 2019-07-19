@@ -10,7 +10,7 @@ public class TennisFactoryTest {
 
     @Test
     public void getTennisFacility() {
-        TennisFacility tennis= TennisFactory.getTennisFacility("Tennis Course");
+        TennisFacility tennis= TennisFactory.getTennisFacility("Tennis Course", "Tennis Name");
         System.out.println(tennis);
         assertNotNull(tennis);
     }
