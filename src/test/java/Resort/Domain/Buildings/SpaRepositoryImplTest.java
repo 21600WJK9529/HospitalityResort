@@ -15,7 +15,7 @@ public class SpaRepositoryImplTest {
     }
     @Test
     public void create() {
-        SpaFacility x= getSpaFacility("TestName");
+        SpaFacility x= getSpaFacility("TestID", "TestName");
         spa.create(x);
         assertNotNull(spa.getAll());
         System.out.println(spa.getAll());
@@ -23,7 +23,7 @@ public class SpaRepositoryImplTest {
 
     @Test
     public void read() {
-        SpaFacility x= getSpaFacility("TestName");
+        SpaFacility x= getSpaFacility("TestID", "TestName");
         spa.create(x);
         assertNotNull(spa.read("TestName"));
         System.out.println(spa.getAll());
@@ -31,10 +31,10 @@ public class SpaRepositoryImplTest {
 
     @Test
     public void update() {
-        SpaFacility x= getSpaFacility("TestName");
+        SpaFacility x= getSpaFacility("TestID", "TestName");
         spa.create(x);
         System.out.println(spa.getAll());
-        SpaFacility xUpdate=getSpaFacility("TestNameUpdated");
+        SpaFacility xUpdate=getSpaFacility("TestID", "TestName");
         spa.update(xUpdate);
         assertEquals(xUpdate,spa.read("TestID"));
         System.out.println(spa.getAll());
@@ -42,7 +42,7 @@ public class SpaRepositoryImplTest {
 
     @Test
     public void delete() {
-        SpaFacility x= getSpaFacility("TestName");
+        SpaFacility x= getSpaFacility("TestID", "TestName");
         spa.create(x);
         System.out.println(spa.getAll());
         spa.delete("TestName");

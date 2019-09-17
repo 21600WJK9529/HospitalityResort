@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 public class SpaFactoryTest {
     @Test
     public void getSpaFacility() {
-        SpaFacility spa= SpaFactory.getSpaFacility("Spa");
+        SpaFacility spa= SpaFactory.getSpaFacility("Spa", "Spa Name");
         System.out.println(spa);
         assertNotNull(spa);
     }

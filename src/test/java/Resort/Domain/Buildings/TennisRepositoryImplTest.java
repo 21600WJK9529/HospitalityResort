@@ -15,7 +15,7 @@ public class TennisRepositoryImplTest {
     }
     @Test
     public void create() {
-        TennisFacility x= getTennisFacility("TestName");
+        TennisFacility x= getTennisFacility("TestName", "Hotel Name");
         tennis.create(x);
         assertNotNull(tennis.getAll());
         System.out.println(tennis.getAll());
@@ -23,7 +23,7 @@ public class TennisRepositoryImplTest {
 
     @Test
     public void read() {
-        TennisFacility x= getTennisFacility("TestName");
+        TennisFacility x= getTennisFacility("TestName", "Hotel Name");
         tennis.create(x);
         assertNotNull(tennis.read("TestName"));
         System.out.println(tennis.getAll());
@@ -31,10 +31,10 @@ public class TennisRepositoryImplTest {
 
     @Test
     public void update() {
-        TennisFacility x= getTennisFacility("TestName");
+        TennisFacility x= getTennisFacility("TestName", "Hotel Name");
         tennis.create(x);
         System.out.println(tennis.getAll());
-        TennisFacility xUpdate=getTennisFacility("TestNameUpdated");
+        TennisFacility xUpdate=getTennisFacility("TestName", "Hotel Name");
         tennis.update(xUpdate);
         assertEquals(xUpdate,tennis.read("TestID"));
         System.out.println(tennis.getAll());
@@ -42,7 +42,7 @@ public class TennisRepositoryImplTest {
 
     @Test
     public void delete() {
-        TennisFacility x= getTennisFacility("TestName");
+        TennisFacility x= getTennisFacility("TestName", "Hotel Name");
         tennis.create(x);
         System.out.println(tennis.getAll());
         tennis.delete("TestName");

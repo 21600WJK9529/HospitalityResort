@@ -15,7 +15,7 @@ public class RestaurantRepositoryImplTest {
     }
     @Test
     public void create() {
-        RestaurantFacility x= getRestaurantFacility("TestName");
+        RestaurantFacility x= getRestaurantFacility("TestName", "Hotel Name");
         restaurant.create(x);
         assertNotNull(restaurant.getAll());
         System.out.println(restaurant.getAll());
@@ -23,7 +23,7 @@ public class RestaurantRepositoryImplTest {
 
     @Test
     public void read() {
-        RestaurantFacility x= getRestaurantFacility("TestName");
+        RestaurantFacility x= getRestaurantFacility("TestName", "Hotel Name");
         restaurant.create(x);
         assertNotNull(restaurant.read("TestName"));
         System.out.println(restaurant.getAll());
@@ -31,10 +31,10 @@ public class RestaurantRepositoryImplTest {
 
     @Test
     public void update() {
-        RestaurantFacility x= getRestaurantFacility("TestName");
+        RestaurantFacility x= getRestaurantFacility("TestName", "Hotel Name");
         restaurant.create(x);
         System.out.println(restaurant.getAll());
-        RestaurantFacility xUpdate=getRestaurantFacility("TestNameUpdated");
+        RestaurantFacility xUpdate=getRestaurantFacility("TestName", "Hotel Name");
         restaurant.update(xUpdate);
         assertEquals(xUpdate,restaurant.read("TestID"));
         System.out.println(restaurant.getAll());
@@ -42,7 +42,7 @@ public class RestaurantRepositoryImplTest {
 
     @Test
     public void delete() {
-        RestaurantFacility x= getRestaurantFacility("TestName");
+        RestaurantFacility x= getRestaurantFacility("TestName", "Hotel Name");
         restaurant.create(x);
         System.out.println(restaurant.getAll());
         restaurant.delete("TestName");
