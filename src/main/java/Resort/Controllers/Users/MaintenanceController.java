@@ -1,23 +1,30 @@
 package Resort.Controllers.Users;
 
 import Resort.Domain.Register.MaintenanceRegister;
-import Resort.Services.people.MaintenanceService;
+import Resort.Domain.ResponseObj;
+import Resort.Factories.Register.MaintenanceFactory;
+import Resort.Factories.ResponseObjFactory;
+import Resort.Services.people.MaintenanceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @RestController
-@RequestMapping("/maintenance")
+@RequestMapping(value = "/HospitalityResort/lookup/maintenance", method = RequestMethod.POST)
 public class MaintenanceController {
 
     @Autowired
-    @Qualifier("MaintenanceServiceImpl")
-    private MaintenanceService service;
+    private MaintenanceServiceImpl service;
 
-    @PostMapping("/create")
-    public MaintenanceRegister create(@RequestBody MaintenanceRegister maintenanceRegister){
+    @PostMapping(value="/create",produces = MediaType.APPLICATION_JSON_VALUE)
+    public MaintenanceRegister create(@PathVariable MaintenanceRegister maintenanceRegister){
+        MaintenanceRegister createMaintenanceRegister;
+        ResponseObj responseObj = ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Maintenance created");
+        createMaintenanceRegister = MaintenanceFactory.getMaintenanceRegister("id","fname", "lname","email","facility","phoneNo");
+        createMaintenanceRegister = service.create(createMaintenanceRegister);
         return service.create(maintenanceRegister);
     }
 
