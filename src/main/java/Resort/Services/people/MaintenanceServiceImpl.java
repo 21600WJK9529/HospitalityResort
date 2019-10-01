@@ -13,7 +13,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
     private Set<MaintenanceRegister> maintenanceRegisters;
     private MaintenanceServiceImpl(){
-        this.repository= MaintenanceRepositoryImpl.getRepository();
+        repository= MaintenanceRepositoryImpl.getRepository();
 
     }
     public MaintenanceServiceImpl getService(){
@@ -32,12 +32,11 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 
 
     public MaintenanceRegister read(String id) {
-        MaintenanceRegister maintenanceRegister = findStaff(id);
-        return maintenanceRegister;
+        return repository.read(id);
     }
-    private MaintenanceRegister findStaff(String id) {
+    public MaintenanceRegister findStaff(String id) {
         return this.maintenanceRegisters.stream()
-                .filter(maintenancerRegister -> maintenancerRegister.getId().trim().equalsIgnoreCase(id))
+                .filter(maintenanceRegister -> maintenanceRegister.getId().trim().equalsIgnoreCase(id))
                 .findAny()
                 .orElse(null);
     }

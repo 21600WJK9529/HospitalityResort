@@ -30,11 +30,11 @@ public class MaintenanceController {
         return ResponseEntity.ok(responseObj);
     }
 
-    @GetMapping(value = "/read/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value ="/read/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity read(@PathVariable String id) {
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Read");
         MaintenanceRegister maintenanceRegister;
-        maintenanceRegister = service.read("id");
+        maintenanceRegister = service.read(id);
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
     }
