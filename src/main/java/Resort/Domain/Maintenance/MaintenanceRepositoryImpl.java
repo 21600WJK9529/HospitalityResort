@@ -1,6 +1,6 @@
 package Resort.Domain.Maintenance;
 
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -46,7 +46,7 @@ public class MaintenanceRepositoryImpl implements MaintenanceRepository{
 
     public MaintenanceRegister search(String maintenanceID){
         return maintenanceRegisterSet.stream().filter(MaintenanceRegister->
-                                                            MaintenanceRegister.getId()==maintenanceID)
+                                                            MaintenanceRegister.getId().equalsIgnoreCase(maintenanceID))
                                                                                     .findAny().orElse(null);
 
     }

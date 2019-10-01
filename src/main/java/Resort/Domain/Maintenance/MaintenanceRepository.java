@@ -1,7 +1,7 @@
 package Resort.Domain.Maintenance;
 
 import Resort.Database.Repository;
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 
 import java.util.Set;
 

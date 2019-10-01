@@ -1,4 +1,4 @@
-package Security;
+package Resort.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,9 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter  {
         auth
                 .inMemoryAuthentication()
                 .withUser("user").password(encoder().encode("password")).roles(USER_ROLE)
-                .and().withUser("admin").password(encoder().encode("admin")).roles(USER_ROLE,ADMIN_ROLE);
+                .and()
+                .withUser("admin").password(encoder().encode("admin")).roles(USER_ROLE,ADMIN_ROLE)
+        ;
 
     }
 
@@ -32,11 +34,11 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter  {
                 .authorizeRequests()
                 .antMatchers("/**").hasRole(ADMIN_ROLE)
                 .and()
-                .csrf().disable()
+                .csrf().disable();
         ;
     }
 
-        @Bean
+    @Bean
     public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }

@@ -1,5 +1,5 @@
 package Resort.Database;
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 
 import java.io.IOException;
 import java.sql.Connection;

@@ -1,6 +1,6 @@
 package Resort.Services.people;
 
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 import Resort.Services.IService;
 
 import java.util.Set;

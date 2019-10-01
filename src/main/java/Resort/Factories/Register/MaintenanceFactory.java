@@ -1,6 +1,6 @@
 package Resort.Factories.Register;
 
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 
 public class MaintenanceFactory {
     public static MaintenanceRegister getMaintenanceRegister(String id, String fName, String lName, String email, String facility, String phoneNo){

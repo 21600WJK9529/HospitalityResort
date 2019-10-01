@@ -1,6 +1,6 @@
 package Resort.Controllers.Users;
 
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 import Resort.Factories.Register.MaintenanceFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;

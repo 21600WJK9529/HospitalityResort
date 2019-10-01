@@ -1,6 +1,6 @@
 package Resort.Domain.Maintenance;
 
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 import org.junit.Before;
 import org.junit.Test;
 

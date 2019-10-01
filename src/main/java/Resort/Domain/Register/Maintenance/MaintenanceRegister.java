@@ -1,4 +1,4 @@
-package Resort.Domain.Register;
+package Resort.Domain.Register.Maintenance;
 
 public class MaintenanceRegister {
     private String id,fName,lName,email,facility,phoneNo;

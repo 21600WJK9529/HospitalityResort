@@ -2,7 +2,7 @@ package Resort.Services.people;
 
 import Resort.Domain.Maintenance.MaintenanceRepository;
 import Resort.Domain.Maintenance.MaintenanceRepositoryImpl;
-import Resort.Domain.Register.MaintenanceRegister;
+import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -37,7 +37,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     }
     private MaintenanceRegister findStaff(String id) {
         return this.maintenanceRegisters.stream()
-                .filter(maintenancerRegister -> maintenancerRegister.getId().trim().equals(id))
+                .filter(maintenancerRegister -> maintenancerRegister.getId().trim().equalsIgnoreCase(id))
                 .findAny()
                 .orElse(null);
     }
