@@ -31,8 +31,8 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     }
 
 
-    public MaintenanceRegister read(String s) {
-        MaintenanceRegister maintenanceRegister = findStaff(s);
+    public MaintenanceRegister read(String id) {
+        MaintenanceRegister maintenanceRegister = findStaff(id);
         return maintenanceRegister;
     }
     private MaintenanceRegister findStaff(String id) {

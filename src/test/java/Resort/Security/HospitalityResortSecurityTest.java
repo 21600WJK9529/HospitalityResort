@@ -34,7 +34,7 @@ public class HospitalityResortSecurityTest {
     public void read() {
 
         ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
-                .getForEntity(BASE_URL+"/read/id", Object.class);
+                .getForEntity(BASE_URL+"/read/id", Object.class, String.class);
         System.out.println(result.getBody());
         assertEquals(HttpStatus.OK, result.getStatusCode());
     }
