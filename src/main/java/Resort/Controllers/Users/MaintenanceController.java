@@ -58,8 +58,10 @@ public class MaintenanceController {
     }
 
     @GetMapping("/read/all")
-    @ResponseBody
-    public Set<MaintenanceRegister> getAll() {
-        return service.getAll();
+    public ResponseEntity getAll() {
+        ResponseObj responseObj = ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Get all");
+        Set<MaintenanceRegister> maintenanceRegisters = service.getAll();
+        responseObj.setResponse(maintenanceRegisters);
+        return ResponseEntity.ok(responseObj);
     }
 }

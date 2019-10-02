@@ -21,11 +21,6 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         return service;
     }
 
-    public Set<MaintenanceRegister> getAll() {
-        return this.maintenanceRegisters;
-    }
-
-
     public MaintenanceRegister create(MaintenanceRegister maintenanceRegister) {
         return this.repository.create(maintenanceRegister);
     }
@@ -49,5 +44,9 @@ public class MaintenanceServiceImpl implements MaintenanceService {
         if(maintenanceRegister!=null) {
             repository.delete(maintenanceRegister.getId());
         }
+    }
+
+    public Set<MaintenanceRegister> getAll() {
+        return maintenanceRegisters;
     }
 }
