@@ -13,7 +13,7 @@ public class ReceptionServiceImpl implements ReceptionService {
 
     private Set<ReceptionRegister> receptionRegisters;
     private ReceptionServiceImpl(){
-        this.repository= ReceptionRepositoryImpl.getRepository();
+        repository= ReceptionRepositoryImpl.getRepository();
 
     }
     public ReceptionServiceImpl getService(){
@@ -26,35 +26,28 @@ public class ReceptionServiceImpl implements ReceptionService {
     }
 
 
-    public ReceptionRegister create(ReceptionRegister ReceptionRegister) {
-        return this.repository.create(ReceptionRegister);
+    public ReceptionRegister create(ReceptionRegister receptionRegister) {
+        return this.repository.create(receptionRegister);
     }
 
 
-    public ReceptionRegister read(String s) {
-        ReceptionRegister receptionRegister = findStaff(s);
-        return receptionRegister;
+    public ReceptionRegister read(String id) {
+        return repository.read(id);
     }
 
 
     public ReceptionRegister update(ReceptionRegister receptionRegister) {
-        ReceptionRegister toDelete=findStaff(receptionRegister.getId());
+        ReceptionRegister toDelete=repository.read(receptionRegister.getId());
         if(toDelete!=null){
-            this.receptionRegisters.remove(toDelete);
-            return create(receptionRegister);
+            this.repository.delete(toDelete.getId());
         }
-        return null;
+        return repository.create(receptionRegister);
     }
 
-    @Override
     public void delete(String id) {
-        ReceptionRegister receptionRegister=findStaff(id);
-        if(receptionRegister!=null)this.receptionRegisters.remove(receptionRegister);
-    }
-    private ReceptionRegister findStaff(String id) {
-        return this.receptionRegisters.stream()
-                .filter(receptionRegister -> receptionRegister.getId().trim().equals(id))
-                .findAny()
-                .orElse(null);
+        ReceptionRegister receptionRegister=repository.read(id);
+        if(receptionRegister!=null) {
+            repository.delete(receptionRegister.getId());
+        }
     }
 }

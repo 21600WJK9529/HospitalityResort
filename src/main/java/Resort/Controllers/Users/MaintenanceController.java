@@ -42,18 +42,16 @@ public class MaintenanceController {
     @PostMapping(value="/update/maintenanceRegister", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity update(){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
-        MaintenanceRegister maintenanceRegister = service.read("id");
-        service.update(maintenanceRegister);
-        MaintenanceRegister maintenanceRegister1 = MaintenanceFactory.getMaintenanceRegister("newId","newFName", "newLName","newEmail","newFacility","newPhoneNo");
-        maintenanceRegister = service.create(maintenanceRegister1);
-        responseObj.setResponse(maintenanceRegister);
+        MaintenanceRegister maintenanceRegister1 = MaintenanceFactory.getMaintenanceRegister("id","newFName", "newLName","newEmail","newFacility","newPhoneNo");
+        service.update(maintenanceRegister1);
+        responseObj.setResponse(maintenanceRegister1);
         return ResponseEntity.ok(responseObj);
     }
 
     @GetMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity delete(@PathVariable String id){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Delete");
-        MaintenanceRegister maintenanceRegister = service.read("newId");
+        MaintenanceRegister maintenanceRegister = service.read("id");
         service.delete(maintenanceRegister.getId());
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     private Set<UserRegister> userRegisters;
     private UserServiceImpl(){
-        this.repository= UserRepositoryImpl.getRepository();
+        repository= UserRepositoryImpl.getRepository();
 
     }
     public UserServiceImpl getService(){
@@ -32,31 +32,24 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public UserRegister read(String s) {
-        UserRegister userRegister = findStaff(s);
-        return userRegister;
+    public UserRegister read(String id) {
+        return repository.read(id);
     }
 
 
     public UserRegister update(UserRegister userRegister) {
-        UserRegister toDelete=findStaff(userRegister.getId());
+        UserRegister toDelete=repository.read(userRegister.getId());
         if(toDelete!=null){
-            this.userRegisters.remove(toDelete);
-            return create(userRegister);
+            this.repository.delete(toDelete.getId());
         }
-        return null;
+        return repository.create(userRegister);
     }
 
     public void delete(String id) {
-        UserRegister userRegister=findStaff(id);
-        if(userRegister!=null)this.userRegisters.remove(userRegister);
-    }
-
-    private UserRegister findStaff(String id) {
-        return this.userRegisters.stream()
-                .filter(userRegister -> userRegister.getId().trim().equals(id))
-                .findAny()
-                .orElse(null);
+        UserRegister userRegister=repository.read(id);
+        if(userRegister!=null) {
+            repository.delete(userRegister.getId());
+        }
     }
 }
 
