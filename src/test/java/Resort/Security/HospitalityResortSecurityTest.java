@@ -37,4 +37,21 @@ public class HospitalityResortSecurityTest {
         System.out.println(result.getBody());
         assertEquals(HttpStatus.OK, result.getStatusCode());
     }
+
+    @Test
+    public void update(){
+        MaintenanceRegister maintenanceRegister = MaintenanceFactory.getMaintenanceRegister("newId","newFName", "newLName","newEmail","newFacility","newPhoneNo");
+        ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
+                .postForEntity(BASE_URL+"/update/maintenanceRegister", maintenanceRegister, Object.class);
+        System.out.println(result.getBody());
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+    }
+
+    @Test
+    public void delete() {
+        ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
+                .getForEntity(BASE_URL+"/delete/newId", String.class);
+        System.out.println(result.getBody());
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+    }
 }

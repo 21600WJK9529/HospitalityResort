@@ -34,26 +34,20 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public MaintenanceRegister read(String id) {
         return repository.read(id);
     }
-    public MaintenanceRegister findStaff(String id) {
-        return this.maintenanceRegisters.stream()
-                .filter(maintenanceRegister -> maintenanceRegister.getId().trim().equalsIgnoreCase(id))
-                .findAny()
-                .orElse(null);
-    }
+
 
     public MaintenanceRegister update(MaintenanceRegister maintenanceRegister) {
-        MaintenanceRegister toDelete=findStaff(maintenanceRegister.getId());
+        MaintenanceRegister toDelete=repository.read(maintenanceRegister.getId());
         if(toDelete!=null){
-            this.maintenanceRegisters.remove(toDelete);
-            return create(maintenanceRegister);
+            this.repository.delete(toDelete.getId());
         }
-        return null;
+        return repository.create(maintenanceRegister);
     }
 
-    @Override
     public void delete(String id) {
-        MaintenanceRegister maintenanceRegister=findStaff(id);
-        if(maintenanceRegister!=null)this.maintenanceRegisters.remove(maintenanceRegister);
-
+        MaintenanceRegister maintenanceRegister=repository.read(id);
+        if(maintenanceRegister!=null) {
+            repository.delete(maintenanceRegister.getId());
+        }
     }
 }
