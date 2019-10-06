@@ -1,10 +1,9 @@
 package Resort.Domain.Maintenance;
 
-import Resort.Database.Repository;
 import Resort.Domain.Register.Maintenance.MaintenanceRegister;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
-public interface MaintenanceRepository extends Repository<MaintenanceRegister,String> {
-    Set<MaintenanceRegister> getAll();
+@Repository
+public interface MaintenanceRepository extends JpaRepository<MaintenanceRegister,String> {
 }

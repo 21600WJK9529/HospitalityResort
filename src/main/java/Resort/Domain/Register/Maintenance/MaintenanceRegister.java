@@ -1,7 +1,12 @@
 package Resort.Domain.Register.Maintenance;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class MaintenanceRegister {
-    private String id,fName,lName,email,facility,phoneNo;
+    @Id
+    private String id;
+    private String fName,lName,email,facility,phoneNo;
 
     private MaintenanceRegister() {
     }
