@@ -2,7 +2,6 @@ package Resort.Controllers.Users;
 
 import Resort.Domain.Register.Maintenance.MaintenanceRegister;
 import Resort.Domain.ResponseObj;
-import Resort.Factories.Register.MaintenanceFactory;
 import Resort.Factories.ResponseObjFactory;
 import Resort.Services.people.MaintenanceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +39,6 @@ public class MaintenanceController {
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
         MaintenanceRegister maintenanceRegister = service.read("id");
         service.update(maintenanceRegister);
-        MaintenanceRegister maintenanceRegister1 = MaintenanceFactory.getMaintenanceRegister("id","newFName", "newLName","newEmail","newFacility","newPhoneNo");
-        maintenanceRegister = service.create(maintenanceRegister1);
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
     }

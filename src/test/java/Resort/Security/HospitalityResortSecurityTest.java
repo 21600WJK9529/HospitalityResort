@@ -40,7 +40,7 @@ public class HospitalityResortSecurityTest {
 
     @Test
     public void update(){
-        MaintenanceRegister maintenanceRegister = MaintenanceFactory.getMaintenanceRegister("id","newFName", "newLName","newEmail","newFacility","newPhoneNo");
+        MaintenanceRegister maintenanceRegister = MaintenanceFactory.getMaintenanceRegister("id","newFName2", "newLName2","newEmail2","newFacility","newPhoneNo");
         ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
                 .postForEntity(BASE_URL+"/update/maintenanceRegister", maintenanceRegister, Object.class);
         System.out.println(result.getBody());

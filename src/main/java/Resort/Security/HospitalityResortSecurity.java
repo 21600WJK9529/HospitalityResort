@@ -31,9 +31,9 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter  {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic()
-                .disable()
+                .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"**/create/**").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST,"**/**").hasRole(ADMIN_ROLE)
                 .and()
                 .csrf().disable()
         ;
