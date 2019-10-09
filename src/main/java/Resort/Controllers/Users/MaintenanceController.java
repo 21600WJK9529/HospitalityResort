@@ -35,11 +35,10 @@ public class MaintenanceController {
         return ResponseEntity.ok(responseObj);
     }
 
-    @PostMapping(value="/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> update(@RequestBody MaintenanceRegister maintenanceRegister, @PathVariable String id){
+    @PostMapping(value="/update/maintenanceRegister", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity update(@RequestBody MaintenanceRegister maintenanceRegister){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
-        MaintenanceRegister find = service.read(id);
-        service.update(find);
+        maintenanceRegister=service.update(maintenanceRegister);
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
     }
@@ -47,7 +46,7 @@ public class MaintenanceController {
     @GetMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity delete(@PathVariable String id){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Delete");
-        MaintenanceRegister maintenanceRegister = service.read("newId");
+        MaintenanceRegister maintenanceRegister = service.read(id);
         service.delete(maintenanceRegister.getId());
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
