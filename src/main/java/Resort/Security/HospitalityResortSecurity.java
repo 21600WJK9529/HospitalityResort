@@ -2,6 +2,7 @@ package Resort.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -30,11 +31,11 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter  {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic()
-                .and()
+                .disable()
                 .authorizeRequests()
-                .antMatchers("/**").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST,"**/create/**").hasRole(ADMIN_ROLE)
                 .and()
-                .csrf().disable();
+                .csrf().disable()
         ;
     }
 

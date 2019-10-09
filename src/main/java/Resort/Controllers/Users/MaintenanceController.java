@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Set;
 
 @RestController
@@ -21,13 +22,8 @@ public class MaintenanceController {
     private MaintenanceServiceImpl service;
 
     @PostMapping(value="/create/maintenanceRegister", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity create(){
-        ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Created");
-        MaintenanceRegister maintenanceRegister1;
-        MaintenanceRegister maintenanceRegister = MaintenanceFactory.getMaintenanceRegister("id", "fName", "lName", "email", "facility", "phoneNo");
-        maintenanceRegister1 = service.create(maintenanceRegister);
-        responseObj.setResponse(maintenanceRegister1);
-        return ResponseEntity.ok(responseObj);
+    public ResponseEntity create(@Valid @RequestBody MaintenanceRegister maintenanceRegister){
+        return ResponseEntity.ok(service.create(maintenanceRegister));
     }
 
     @GetMapping(value ="/read/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,7 +40,7 @@ public class MaintenanceController {
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
         MaintenanceRegister maintenanceRegister = service.read("id");
         service.update(maintenanceRegister);
-        MaintenanceRegister maintenanceRegister1 = MaintenanceFactory.getMaintenanceRegister("newId","newFName", "newLName","newEmail","newFacility","newPhoneNo");
+        MaintenanceRegister maintenanceRegister1 = MaintenanceFactory.getMaintenanceRegister("id","newFName", "newLName","newEmail","newFacility","newPhoneNo");
         maintenanceRegister = service.create(maintenanceRegister1);
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
