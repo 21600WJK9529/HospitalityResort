@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -34,11 +35,11 @@ public class MaintenanceController {
         return ResponseEntity.ok(responseObj);
     }
 
-    @PostMapping(value="/update/maintenanceRegister", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity update(){
+    @PostMapping(value="/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> update(@RequestBody MaintenanceRegister maintenanceRegister, @PathVariable String id){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
-        MaintenanceRegister maintenanceRegister = service.read("id");
-        service.update(maintenanceRegister);
+        MaintenanceRegister find = service.read(id);
+        service.update(find);
         responseObj.setResponse(maintenanceRegister);
         return ResponseEntity.ok(responseObj);
     }

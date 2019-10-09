@@ -32,26 +32,27 @@ public class MaintenanceControllerTest {
                         "TestEmail",
                         "GolfTest",
                         "TestPhone");
+
         System.out.println(mainRegister);
 
-        ResponseEntity<MaintenanceRegister> postResponse = restTemplate.postForEntity(baseURL + "/create", mainRegister, MaintenanceRegister.class);
+        ResponseEntity<MaintenanceRegister> postResponse = restTemplate.withBasicAuth("admin", "admin").postForEntity(baseURL + "/create", mainRegister, MaintenanceRegister.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
     }
 
     @Test
     public void read() {
-        MaintenanceRegister mainRegister = restTemplate.getForObject(baseURL + "/read/216062241", MaintenanceRegister.class);
+        MaintenanceRegister mainRegister = restTemplate.withBasicAuth("admin", "admin").getForObject(baseURL + "/read/216062241", MaintenanceRegister.class);
         assertNotNull(mainRegister);
     }
 
     @Test
     public void update() {
         int id =216062241;
-        MaintenanceRegister mainRegister = restTemplate.getForObject(baseURL + "/216009529/" + id, MaintenanceRegister.class);
+        MaintenanceRegister mainRegister = restTemplate.withBasicAuth("admin", "admin").getForObject(baseURL + "/216009529/" + id, MaintenanceRegister.class);
 
         restTemplate.put(baseURL + "/216062241/" + id, mainRegister);
-        MaintenanceRegister updatedAppointment = restTemplate.getForObject(baseURL + "/216009520/" + id, MaintenanceRegister.class);
+        MaintenanceRegister updatedAppointment = restTemplate.withBasicAuth("admin", "admin").getForObject(baseURL + "/216009520/" + id, MaintenanceRegister.class);
         assertNotNull(updatedAppointment);
     }
 
