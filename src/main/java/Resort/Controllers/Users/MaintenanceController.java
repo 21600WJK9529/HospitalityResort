@@ -11,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -27,12 +28,21 @@ public class MaintenanceController {
     }
 
     @GetMapping(value ="/read/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity read(@PathVariable String id) {
+    public List<String> read(@PathVariable String id) {
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Read");
         MaintenanceRegister maintenanceRegister;
         maintenanceRegister = service.read(id);
+
+        List<String> arr=new ArrayList<>();
+        arr.add(maintenanceRegister.getId());
+        arr.add(maintenanceRegister.getfName());
+        arr.add(maintenanceRegister.getlName());
+        arr.add(maintenanceRegister.getEmail());
+        arr.add(maintenanceRegister.getFacility());
+        arr.add(maintenanceRegister.getphoneNo());
+
         responseObj.setResponse(maintenanceRegister);
-        return ResponseEntity.ok(responseObj);
+        return arr;
     }
 
     @PostMapping(value="/update/maintenanceRegister", produces = MediaType.APPLICATION_JSON_VALUE)
