@@ -1,19 +1,20 @@
 package Resort.Services.people;
 
 import Resort.Domain.Reception.ReceptionRepository;
-import Resort.Domain.Reception.ReceptionRepositoryImpl;
-import Resort.Domain.Register.ReceptionRegister;
+import Resort.Domain.Register.Reception.ReceptionRegister;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
-@Service("ReceptionServiceImpl")
+@Service
 public class ReceptionServiceImpl implements ReceptionService {
     private ReceptionServiceImpl service=null;
+    @Autowired
     private ReceptionRepository repository;
 
     private Set<ReceptionRegister> receptionRegisters;
     private ReceptionServiceImpl(){
-        this.repository= ReceptionRepositoryImpl.getRepository();
 
     }
     public ReceptionServiceImpl getService(){
@@ -26,35 +27,23 @@ public class ReceptionServiceImpl implements ReceptionService {
     }
 
 
-    public ReceptionRegister create(ReceptionRegister ReceptionRegister) {
-        return this.repository.create(ReceptionRegister);
+    public ReceptionRegister create(ReceptionRegister receptionRegister) {
+        return this.repository.save(receptionRegister);
     }
 
 
-    public ReceptionRegister read(String s) {
-        ReceptionRegister receptionRegister = findStaff(s);
-        return receptionRegister;
+    public ReceptionRegister read(String id) {
+        Optional<ReceptionRegister> optionalReceptionRegister = repository.findById(id);
+        return optionalReceptionRegister.orElse(null);
     }
 
 
     public ReceptionRegister update(ReceptionRegister receptionRegister) {
-        ReceptionRegister toDelete=findStaff(receptionRegister.getId());
-        if(toDelete!=null){
-            this.receptionRegisters.remove(toDelete);
-            return create(receptionRegister);
-        }
-        return null;
+       return repository.save(receptionRegister);
     }
 
-    @Override
     public void delete(String id) {
-        ReceptionRegister receptionRegister=findStaff(id);
-        if(receptionRegister!=null)this.receptionRegisters.remove(receptionRegister);
+        repository.deleteById(id);
     }
-    private ReceptionRegister findStaff(String id) {
-        return this.receptionRegisters.stream()
-                .filter(receptionRegister -> receptionRegister.getId().trim().equals(id))
-                .findAny()
-                .orElse(null);
-    }
+
 }

@@ -1,10 +1,9 @@
 package Resort.Domain.Reception;
 
-import Resort.Database.Repository;
-import Resort.Domain.Register.ReceptionRegister;
+import Resort.Domain.Register.Reception.ReceptionRegister;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
-public interface ReceptionRepository extends Repository<ReceptionRegister,String> {
-    Set<ReceptionRegister> getAll();
+@Repository
+public interface ReceptionRepository extends JpaRepository<ReceptionRegister,String> {
 }

@@ -1,7 +1,7 @@
 package Resort.Factories;
 
 import Resort.Factories.Register.UserFactory;
-import Resort.Domain.Register.UserRegister;
+import Resort.Domain.Register.User.UserRegister;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,6 +1,6 @@
 package Resort.Factories.Register;
 
-import Resort.Domain.Register.ReceptionRegister;
+import Resort.Domain.Register.Reception.ReceptionRegister;
 
 public class ReceptionFactory {
     public static ReceptionRegister getReceptionRegister(String id, String fName, String lName,String email, String facility, String phoneNo){

@@ -1,20 +1,21 @@
 package Resort.Services.people;
 
 import Resort.Database.User.UserRepository;
-import Resort.Database.User.UserRepositoryImpl;
-import Resort.Domain.Register.UserRegister;
+import Resort.Domain.Register.User.UserRegister;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
-@Service("UserServiceImpl")
+@Service
 public class UserServiceImpl implements UserService {
     private UserServiceImpl service=null;
+    @Autowired
     private UserRepository repository;
 
     private Set<UserRegister> userRegisters;
     private UserServiceImpl(){
-        this.repository= UserRepositoryImpl.getRepository();
 
     }
     public UserServiceImpl getService(){
@@ -28,35 +29,23 @@ public class UserServiceImpl implements UserService {
 
 
     public UserRegister create(UserRegister userRegister) {
-        return this.repository.create(userRegister);
+        return this.repository.save(userRegister);
     }
 
 
-    public UserRegister read(String s) {
-        UserRegister userRegister = findStaff(s);
-        return userRegister;
+    public UserRegister read(String id) {
+        Optional<UserRegister> optionalReceptionRegister = repository.findById(id);
+        return optionalReceptionRegister.orElse(null);
     }
 
 
     public UserRegister update(UserRegister userRegister) {
-        UserRegister toDelete=findStaff(userRegister.getId());
-        if(toDelete!=null){
-            this.userRegisters.remove(toDelete);
-            return create(userRegister);
-        }
-        return null;
+        return repository.save(userRegister);
     }
 
     public void delete(String id) {
-        UserRegister userRegister=findStaff(id);
-        if(userRegister!=null)this.userRegisters.remove(userRegister);
+       repository.deleteById(id);
     }
 
-    private UserRegister findStaff(String id) {
-        return this.userRegisters.stream()
-                .filter(userRegister -> userRegister.getId().trim().equals(id))
-                .findAny()
-                .orElse(null);
-    }
 }
 

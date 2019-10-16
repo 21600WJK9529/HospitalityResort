@@ -1,8 +1,14 @@
-package Resort.Domain.Register;
+package Resort.Domain.Register.Reception;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ReceptionRegister {
-    private String id,fName,lName,email,facility,phoneNo;
-
+    @Id
+    private String id;
+    private String fName,lName,email,facility,phoneNo;
     private ReceptionRegister() {
     }
 

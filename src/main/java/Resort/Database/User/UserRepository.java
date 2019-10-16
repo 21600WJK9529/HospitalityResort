@@ -1,10 +1,9 @@
 package Resort.Database.User;
 
-import Resort.Database.Repository;
-import Resort.Domain.Register.UserRegister;
+import Resort.Domain.Register.User.UserRegister;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
-public interface UserRepository extends Repository<UserRegister,String> {
-    Set<UserRegister> getAll();
+@Repository
+public interface UserRepository extends JpaRepository<UserRegister,String> {
 }

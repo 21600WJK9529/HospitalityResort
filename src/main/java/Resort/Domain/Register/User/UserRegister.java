@@ -1,14 +1,13 @@
-package Resort.Domain.Register;
+package Resort.Domain.Register.User;
 
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class UserRegister {
-
-    private String id,fName,lName,phoneNo;
-
-
-    private Set<UserRegister> userRegister;
-
+    @Id
+    private String id;
+    private String fName,lName,phoneNo;
         public UserRegister(){
 
         }
@@ -39,8 +38,6 @@ public class UserRegister {
         public static class Builder {
 
             private String id,fName,lName,phoneNo;
-
-            private Set<UserRegister> userRegister;
 
             public Builder setId(String id) {
                 this.id = id;
@@ -74,7 +71,6 @@ public class UserRegister {
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
                 ", phoneNo=" + phoneNo +
-                ", userRegister=" + userRegister +
                 '}';
     }
 }

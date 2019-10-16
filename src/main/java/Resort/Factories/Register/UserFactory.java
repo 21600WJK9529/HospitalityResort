@@ -1,6 +1,6 @@
 package Resort.Factories.Register;
 
-import Resort.Domain.Register.UserRegister;
+import Resort.Domain.Register.User.UserRegister;
 
 public class UserFactory {
     public static UserRegister getUserRegister(String id,String fName,String lName,String phoneNo){
