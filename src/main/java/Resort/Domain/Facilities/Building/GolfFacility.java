@@ -1,26 +1,29 @@
 package Resort.Domain.Facilities.Building;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
+public class GolfFacility {
 
-import Resort.Domain.Facilities.FacilitiesInterface;
+    @Id
+    private String golfID;
 
-public class GolfFacility implements FacilitiesInterface {
-    private String golfID,golfName;
+    private String golfName;
 
-    public GolfFacility() {
+    private GolfFacility(){
+
     }
-    private GolfFacility(Builder builder) {
+    public GolfFacility(Builder builder) {
         this.golfID = builder.golfID;
         this.golfName=builder.golfName;
     }
-    public String getGolfName() {
-        return golfName;
-    }
-    public String getId() {
+
+    public String getGolfID() {
         return golfID;
     }
-    @Override
-    public void println() {
-        System.out.println("Golf Facility");
+
+    public String getGolfName() {
+        return golfName;
     }
 
 

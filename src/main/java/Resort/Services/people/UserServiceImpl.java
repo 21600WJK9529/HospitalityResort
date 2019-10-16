@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
 
     private Set<UserRegister> userRegisters;
     private UserServiceImpl(){
-
     }
     public UserServiceImpl getService(){
         if (service == null) service= new UserServiceImpl();

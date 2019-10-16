@@ -8,6 +8,7 @@ public class UserRegister {
     @Id
     private String id;
     private String fName,lName,phoneNo;
+
         public UserRegister(){
 
         }
@@ -22,21 +23,17 @@ public class UserRegister {
     public String getId() {
         return id;
     }
-
     public String getfName() {
         return fName;
     }
-
     public String getlName() {
         return lName;
     }
-
     public String getPhoneNo() {
         return phoneNo;
     }
 
         public static class Builder {
-
             private String id,fName,lName,phoneNo;
 
             public Builder setId(String id) {
