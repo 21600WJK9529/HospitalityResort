@@ -11,7 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
-
+//    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//    String userName=auth.getPrincipal().toString();
+//    String userRole=auth.getAuthorities().toString();
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -23,6 +25,7 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
     }
 
     // Secure the endpoints with HTTP Basic authentication
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -39,7 +42,7 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
-                .formLogin().defaultSuccessUrl("http://localhost/practice/PHP/")
+                .formLogin().defaultSuccessUrl("http://localhost/practice/PHP")
                 .and()
                 .logout().permitAll()
                 .invalidateHttpSession(true).permitAll()
@@ -51,4 +54,5 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
     public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
+
 }
