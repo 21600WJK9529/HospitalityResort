@@ -10,32 +10,40 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter  {
-
-    private static final String USER_ROLE = "USER";
-    private static final String ADMIN_ROLE = "ADMIN";
+public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user").password(encoder().encode("password")).roles(USER_ROLE)
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.inMemoryAuthentication()
+                .withUser("user").password(encoder().encode("password")).roles("USER")
                 .and()
-                .withUser("admin").password(encoder().encode("admin")).roles(USER_ROLE,ADMIN_ROLE)
-        ;
+                .withUser("admin").password(encoder().encode("password")).roles("USER", "ADMIN");
 
     }
 
+    // Secure the endpoints with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
+                //HTTP Basic authentication
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"**/**").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/login").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/HospitalityResort/**/create/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/HospitalityResort/**/read/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/HospitalityResort/**/update/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/HospitalityResort/**/delete/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
+                .formLogin().defaultSuccessUrl("http://localhost/practice/PHP/")
+                .and()
+                .logout().permitAll()
+                .invalidateHttpSession(true).permitAll()
+                .logoutSuccessUrl("/login")
         ;
     }
 
