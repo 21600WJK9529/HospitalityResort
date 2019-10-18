@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
     @GetMapping("/login")
     public ResponseEntity<String> home() {
-
         return new ResponseEntity<>("Welcome to the home page!", HttpStatus.OK);
-
     }
-
 }

@@ -1,5 +1,6 @@
 package Resort.Security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,12 +9,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
-//    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//    String userName=auth.getPrincipal().toString();
-//    String userRole=auth.getAuthorities().toString();
+private AuthenticationSuccessHandler authenticationSuccessHandler;
+    @Autowired
+    public HospitalityResortSecurity(AuthenticationSuccessHandler authenticationSuccessHandler) {
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+    }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -25,7 +29,6 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
     }
 
     // Secure the endpoints with HTTP Basic authentication
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -35,6 +38,7 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/login").hasRole("USER")
+                //.antMatchers(HttpMethod.GET, "info/name").permitAll()
                 .antMatchers(HttpMethod.POST, "/HospitalityResort/**/create/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/HospitalityResort/**/read/**").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/HospitalityResort/**/update/**").hasRole("ADMIN")
@@ -42,7 +46,8 @@ public class HospitalityResortSecurity extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
-                .formLogin().defaultSuccessUrl("http://localhost/practice/PHP")
+                .formLogin()
+                .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout().permitAll()
                 .invalidateHttpSession(true).permitAll()
