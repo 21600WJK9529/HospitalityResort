@@ -24,7 +24,7 @@ public class HospitalityResortSecurityTest {
     @Test
     public void create() {
         MaintenanceRegister maintenanceRegister = MaintenanceFactory.getMaintenanceRegister("id","fName", "lName","email","facility","phoneNo");
-        ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
+        ResponseEntity result = restTemplate.withBasicAuth("admin", "password")
                 .postForEntity(BASE_URL + "/create/maintenanceRegister", maintenanceRegister, Object.class);
         System.out.println(result.getBody());
         assertEquals(HttpStatus.OK, result.getStatusCode());
@@ -49,8 +49,8 @@ public class HospitalityResortSecurityTest {
 
     @Test
     public void delete() {
-        ResponseEntity result = restTemplate.withBasicAuth("admin", "admin")
-                .getForEntity(BASE_URL+"/delete/id", String.class);
+        ResponseEntity result = restTemplate.withBasicAuth("admin", "password")
+                .getForEntity(BASE_URL+"/delete/phpid", String.class);
         System.out.println(result.getBody());
         assertEquals(HttpStatus.OK, result.getStatusCode());
     }

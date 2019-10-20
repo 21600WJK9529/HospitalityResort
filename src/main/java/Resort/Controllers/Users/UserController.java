@@ -6,6 +6,8 @@ import Resort.Factories.ResponseObjFactory;
 import Resort.Services.people.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -24,8 +26,7 @@ public class UserController {
         return service.create(userRegister);
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(value ="/read/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> read(@PathVariable String id) {
         ResponseObj responseObj= ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Read");
         UserRegister userRegister;
@@ -40,15 +41,21 @@ public class UserController {
         responseObj.setResponse(userRegister);
         return arr;
     }
-    @PostMapping("/update/userRegister")
-    @ResponseBody
-    public UserRegister update(UserRegister userRegister){
-        return service.update(userRegister);
+    @PostMapping(value="/update/userRegister", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity update(@RequestBody UserRegister userRegister){
+        ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
+        userRegister=service.update(userRegister);
+        responseObj.setResponse(userRegister);
+        return ResponseEntity.ok(responseObj);
     }
-    @GetMapping("/delete/{id}")
+
+    @GetMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void delete(@PathVariable String id){
-        service.delete(id);
+        ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Delete");
+        UserRegister userRegister = service.read(id);
+        service.delete(userRegister.getId());
+        responseObj.setResponse(userRegister);
     }
 
     @GetMapping("/read/all")

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -54,12 +55,11 @@ public class MaintenanceController {
     }
 
     @GetMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity delete(@PathVariable String id){
+    public void delete(@PathVariable String id){
         ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Delete");
         MaintenanceRegister maintenanceRegister = service.read(id);
         service.delete(maintenanceRegister.getId());
         responseObj.setResponse(maintenanceRegister);
-        return ResponseEntity.ok(responseObj);
     }
 
     @GetMapping("/read/all")

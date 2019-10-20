@@ -24,6 +24,7 @@ public class GolfController {
 
     @PostMapping(value = "/create/golfCreate", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity create(@Valid @RequestBody GolfFacility golfFacility){
+
         return ResponseEntity.ok(service.create(golfFacility));
     }
 
@@ -41,19 +42,24 @@ public class GolfController {
         responseObj.setResponse(golfFacility);
         return arr;
     }
-    @PostMapping("/update/golfFacility")
-    @ResponseBody
-    public GolfFacility update(GolfFacility golfFacility){
-        return service.update(golfFacility);
+    @PostMapping(value="/update/golfFacility", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity update(@RequestBody GolfFacility golfFacility){
+        ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Update");
+        golfFacility=service.update(golfFacility);
+        responseObj.setResponse(golfFacility);
+        return ResponseEntity.ok(responseObj);
     }
-    @GetMapping("/delete/{id}")
-    @ResponseBody
-    public void delete(@PathVariable String id){
-        service.delete(id);
+
+    @GetMapping(value="/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity delete(@PathVariable String id){
+        ResponseObj responseObj=ResponseObjFactory.buildGenericResponseObj(HttpStatus.OK.toString(), "Delete");
+        GolfFacility golfFacility = service.read(id);
+        service.delete(golfFacility.getGolfID());
+        responseObj.setResponse(golfFacility);
+        return ResponseEntity.ok(responseObj);
     }
 
     @GetMapping("/read/all")
-    @ResponseBody
     public Set<GolfFacility> getAll() {
         return service.getAll();
     }

@@ -2,6 +2,7 @@ package Resort.Domain.Register.Maintenance;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 @Entity
 public class MaintenanceRegister {
     @Id
@@ -53,9 +54,7 @@ public class MaintenanceRegister {
     }
 
     public static class Builder {
-
         private String id,fName,lName,email,facility,phoneNo;
-
 
         public Builder setId(String id){
             this.id=id;
